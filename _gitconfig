@@ -1,0 +1,40 @@
+[user]
+	name = Guangliang Zhao
+	email = lucienchao@gmail.com 
+[color]
+	ui = true
+	interactive = auto
+	diff = auto
+	status = auto
+	branch = auto
+[format]
+	signoff = true
+[apply]
+	whitespace = fix
+[alias]
+	co = checkout
+	ci = commit -s
+	di = diff
+	st = status
+	review = review 
+	b = branch
+	l = log
+	ls = ls-files
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+[sendemail]
+	smtpencryption = tls
+	smtpserver = /usr/bin/msmtp
+	user = lucienchao@gmail.com 
+	suppresscc = all
+	cc = lucienchao@gmail.com
+	aliasfiletype = ~/.mutt/alias
+[core]
+	editor = vim
+	pager = less -R
+[push]
+	default = matching
+

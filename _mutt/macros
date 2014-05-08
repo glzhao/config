@@ -1,0 +1,46 @@
+bind index gg first-entry
+bind index A group-reply 
+bind index G last-entry
+
+bind index,pager \Cf next-page
+bind index,pager \Cb previous-page
+
+bind pager k previous-line
+bind pager j next-line
+bind pager gg top
+bind pager G bottom
+
+bind index,pager r group-reply
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+macro generic,index,pager S "!~/.mutt/msmtpqueue/msmtp-runqueue.sh^M"
+macro generic,index,pager "<esc>1" ":set from='Guangliang Zhao <lucienchao@gmail.com>'<enter>"
+
+#macro generic,index,pager ,s ':exec change-folder <enter> +/inbox/from_suse/INBOX/<enter>'
+macro generic,index,pager ,glzhao ':exec change-folder <enter> +/inbox/glzhao1_at_gmail/INBOX/<enter>'
+macro generic,index,pager ,h ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/INBOX/<enter>'
+macro generic,index,pager ,backup ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/Backup/<enter>'
+macro generic,index,pager ,trash ':exec change-folder <enter> +/trash/<enter>'
+
+folder-hook $folder/inbox/lucienchao_at_gmail/INBOX/ \
+		"macro index ,me '<limit>~C lucienchao@gmail.com | ~C lucien.chao@gmail.com<enter>'"
+
+macro generic,index,pager ,cd ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/ceph.ceph-devel/<enter>'
+macro generic,index,pager ,cu ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/ceph.ceph-user/<enter>'
+
+macro generic,index,pager ,aa ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/SUSE.AABill/<enter>'
+
+macro generic,index,pager ,dm ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/lvm.dm-devel/<enter>'
+macro generic,index,pager ,lvm ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/lvm.linux-lvm/<enter>'
+
+macro generic,index,pager ,btr ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel.btrfs/<enter>'
+macro generic,index,pager ,ext ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel.ext4/<enter>'
+macro generic,index,pager ,ocfs ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel.ocfs2/<enter>'
+macro generic,index,pager ,fs ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel.fsdevel/<enter>'
+
+macro generic,index,pager ,kernel ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel/ <enter>'
+macro generic,index,pager ,next ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kernel.linux-next/<enter>'
+macro generic,index,pager ,newbie ':exec change-folder <enter> +/inbox/lucienchao_at_gmail/kenrel.newbie/<enter>'
+

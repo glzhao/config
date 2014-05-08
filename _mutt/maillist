@@ -1,0 +1,30 @@
+# ft = conf
+# mail list
+subscribe linux-kernel@vger.kernel.org
+subscribe linux-next@vger.kernel.org
+subscribe linux-ext4@vger.kernel.org
+subscribe linux-btrfs@vger.kernel.org
+subscribe linux-newbie@vger.kernel.org
+subscribe linux-c-programming@vger.kernel.org
+subscribe linux-fsdevel@vger.kernel.org
+subscribe ceph-devel@vger.kernel.org
+subscribe ceph-users@lists.ceph.com
+subscribe ocfs2-devel@oss.oracle.com
+subscribe linux-trace-users@vger.kernel.org
+
+subscribe dm-devel@redhat.com
+subscribe lvm-devel@redhat.com
+subscribe drbd-announce@lists.linbit.com
+subscribe drbd-dev@lists.linbit.com
+subscribe linux-lvm@redhat.com
+subscribe discuss@corosync.org
+
+subscribe devel-server@suse.de
+subscribe ha-devel@suse.de
+subscribe kernel@suse.de
+subscribe research@suse.de
+subscribe ceph-bugs@suse.de
+subscribe cloud-devel@suse.de
+subscribe devel@suse.de
+
+subscribe aabill.novell@gmail.com

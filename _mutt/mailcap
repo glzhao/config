@@ -1,0 +1,17 @@
+# ft=conf
+application/vnd.oasis.opendocument.presentation; libreoffice %s;
+application/vnd.ms-excel; libreoffice "%s";
+application/msword; libreoffice %s;
+application/pdf; evince "%s";
+
+application/x-gunzip;   gzcat; copiousoutput
+application/x-tar-gz; gunzip -c %s | tar -tf - ; copiousoutput
+application/postscript; ps2ascii %s; copiousoutput
+#text/enriched;  enriched.sh  ; copiousoutput
+
+image/*; /usr/bin/xdg-open '%s' & sleep 5; test=test -n "$DISPLAY";
+#text/html; /usr/bin/google-chrome %s & sleep 5; test=test -n "$DISPLAY";
+#text/html; /usr/bin/w3m %s; nametemplate=%s.html;
+#text/html; lynx -stdin -dump -force_html ; copiousoutput
+text/html; w3m -I %{charset} -T text/html -dump; copiousoutput;
+text/plain; more %s;

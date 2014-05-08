@@ -1,0 +1,92 @@
+#############################################################
+# -- general settings
+#
+
+alias v='vim'
+alias gv='gvim'
+alias vi='vim'
+alias vd='vimdiff'
+alias vt='vim -t'
+
+alias md='mkdir -p'
+alias rd='rmdir'
+alias psg='ps auxw |grep -i'
+
+alias cdf='cd *$1*/'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+alias l='ls -alF --color'
+alias la='ls -la --color'
+alias ll='ls -l --color'
+alias ls='ls  --color $LS_OPTIONS'
+alias ls-l='ls -l --color'
+alias dir='ls -l --color'
+
+alias rm='rm -iv'
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias ln='ln -iv'
+alias eject='eject -v'
+alias df='df -hT'
+alias du='du -h'
+alias info='info --vi-keys'
+alias free='free -tm'
+
+alias su='su -'
+
+alias f='find . -name'
+alias fg='find . -type f -print0 | xargs -0 -e egrep -n --color=auto'
+
+#alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+alias webshare='$(which python) -m SimpleHTTPServer ${1:-8000}'
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+#############################################################
+# -- work related 
+
+alias iosc='osc -A https://api.suse.de'
+alias oosc='osc -A https://api.opensuse.org'
+
+#############################################################
+# -- other settings 
+
+alias beep='echo -en "\007"'
+alias o='less'
+alias rehash='hash -r'
+alias unmount='echo "Error: Try the command: umount" 1>&2; false'
+alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "/sbin/yast2 online_update" ; fi'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+alias clean_pycs='find . -name "*.pyc" -exec rm {} \;'
+
+#############################################################
+# -- functions 
+
+whatsmy_primary_ip() {
+	local _if="$(netstat -nr | grep ^0\.0\.0\.0 | awk '{print $8}')"
+	local _ip="$(/sbin/ifconfig $_if | \
+		grep '^[[:space:]]*inet ' | awk '{print $2}' | \
+		awk -F':' '{print $2}')"
+
+	if [ -z "$_ip" -o "$_ip" == "" ]; then
+		echo "Could not determine primary IP address"
+		return 10
+	else
+		echo $_ip
+	fi
+}
+
+whatsmy_public_ip() {
+	#curl --silent 'http://jsonip.com/'
+	curl ifconfig.me
+}

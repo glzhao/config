@@ -1,0 +1,19 @@
+# ft = conf
+# score
+score "~N" 		+5		# new mail
+score "~C gzhao"	+15
+score "~C ha-devel"	+4
+score "~C lucienchao"	+2
+score "~C research"	+1		
+score "~C kernel"	+1		
+score "~C devel-server"	+1		
+
+score "~f lmb" 		+1     
+score "~f jjzhang"	+1     
+score "~f agao"		-1     
+
+score "~O" 		+1		# unread
+score "~s 通知" 	+2		#
+score "~s Circulation" 	+2		#
+score "~D" 		-5		#
+score "~s believe" 	-10		#

@@ -1,0 +1,34 @@
+# ft=conf
+
+alias qq zhaolance@qq.com (Guangliang Zhao)
+alias lucien lucienchao@gmail.com (Guangliang Zhao)
+alias glzhao1 glzhao1@gmail.com (Guangliang Zhao)
+
+# For suse
+alias suse gzhao@suse.com (Guangliang Zhao)
+alias ha-devel <ha-devel@suse.de>
+alias devel-server <devel-server@suse.de>
+alias kernel-suse <kernel@suse.de>
+alias devel-suse <devel@suse.de>
+
+alias dmzhang Dongmao Zhang <dmzhang@suse.com>
+alias lzhong Lidong Zhong <lzhong@suse.com>
+
+alias jjzhang Jiaju Zhang <jjzhang.linux@gmail.com>
+
+alias michal.marek Michal Marek <mmarek@suse.cz>
+alias yiri.kosina Jiri Kosina <jkosina@suse.cz>
+alias lars Lars Marowsky-Bree <lmb@suse.com>
+alias neilbrown Neil Brown <neilb@suse.de>
+alias jankara Jan Kara <jack@suse.cz>
+alias bugzilla_noreply Bugzilla Novell <bugzilla_noreply@novell.com>
+
+# For community 
+alias ceph-devel <ceph-devel@vger.kernel.org>
+
+alias yehuda.sadeh Yehuda Sadeh <yehuda@inktank.com>
+alias alex.elder Alex Elder <elder@inktank.com>
+alias sage.weil Sage Weil <sage@inktank.com>
+alias yan.zheng Yan Zheng <ukernel@gmail.com>
+alias yan.zheng Yan Zheng <zheng.z.yan@intel.com>
+alias Majordomo Majordomo <Majordomo@vger.kernel.org>

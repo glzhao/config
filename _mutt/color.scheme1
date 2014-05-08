@@ -1,0 +1,157 @@
+#----------------------------------------------------------------------
+# MUTT Configuration file - francesco ciattaglia - creato nov. 2001
+#----------------------------------------------------------------------
+
+# la stringa di seguito serve a far riconoscere a jed che si tratta di
+# un file di configurazione di mutt e ad attivare la relativa
+# evidenziazione della sintassi tramite muttrc.sl
+#'-*-muttrc-*-'
+
+
+# colori utilizzabili:
+# white
+# black
+# green
+# magenta
+# blue
+# cyan
+# yellow
+# red
+# default (trasparente)
+# colorx
+# color0 = nero
+# color1 = rosso mattone
+# color2 = verde
+# color3 = nero
+# color4 = blu
+# color5 = viola
+# color6 = verde acquamarina (cyan)
+# color7 = grigio
+# color8 = non gestito
+# color9 = non gestito
+
+# COLORI SU SFONDO TRASPARENTE
+
+# colori testo - funzioni generali del programma
+color normal     black		default				# testo normale
+color status     brightyellow   blue				# righe di stato (status bars)
+color search     brightyellow   red				# ricerche
+color message    brightyellow   black				# messaggi di informazione di mutt (ultima riga)
+color error      brightred      black				# messaggi di errore di mutt (ultima riga)
+color markers    brightred      white				# il "+" all'inizio delle righe mandate a capo
+
+# colori testo - message index menu e attachment menu
+color indicator  brightwhite    cyan				# la barra che indica il messaggio attuale
+color tree       red		default				# frecce dei thread
+color index      blue           default  ~P			# messaggi da me
+color index      blue           default  ~F			# messaggi importanti	! flag visualizzato - comando "F"
+color index      green		default  ~N			# messaggi nuovi 	N flag visualizzato - comando "N"
+color index	 color5 	default  ~U                     # messaggi non letti    U flag visualizzato
+color index      color1	        default  ~T			# messaggi tagged	* flag visualizzato - comando "t"
+color index      brightcyan     default  ~D			# messaggi cancellati	D flag visualizzato - comandi "d"/"u"
+
+# (la colorazione per punteggio diventa ridondante se si ordinano i messaggi per score)
+#color index	 cyan		default '(~n 1-4)'		# messaggi con score 1-4 (marcati automat. per cancellazione)
+#color index	 green		default '(~n 5-7)'		# messaggi con score 5-7
+#color index	 blue		default '(~n 8-10)'		# messaggi con score 8-10 (flaggati automaticamente)
+#color index	 black		default '(~n 11-50)'		# messaggi con score 11-50
+#color index	 black		default '(~n 51-100)'		# messaggi con score 51-100
+
+# colori testo - pager di visualizzazione messaggi
+color hdrdefault color7		default				# colorazione di default per righe degli header (grigio/bianco: poco visibili)
+#color header     blue		default "^(from|subject):"	# header from: subject: (blue/bianco: ben visibili)
+color header     blue		default "^(from):"		# header from: (blue/bianco: ben visibili)
+color header	 color1		default "^(subject):"		# header subject: (rosso mattone/bianco: ben visibile e differenziato dal vicino blu della barra di separazione tra index e pager)
+color header	 black		default "^(to):"		# header to: (nero/bianco: ben visibile)
+color bold       blue		default				# evidenziazione del grassetto nei body
+color underline  green		default				# evidenziazione del sottolineato nei body
+color attachment blue           default				# righe con nomi file MIME allegati al msg
+color signature  green		default				# firma (signature)
+color tilde      cyan		default				# ~ alla fine dei messaggi
+color quoted     cyan           default				# testo quotato
+color quoted1    magenta        default				# testo quotato 1° livello 
+color quoted2    magenta        default				# testo quotato 2° livello
+color quoted3    magenta        default
+color quoted4    magenta        default
+color quoted5    magenta        default
+color quoted6    magenta        default
+color quoted7    magenta        default
+color quoted8    magenta        default
+color quoted9    magenta        default
+color body       color5		default  "((ftp|http|https)://|(file|mailto|news):|www\\.)[-a-zA-Z0-9_.:]\
+*[a-zA-Z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body       blue           default  "[-a-zA-Z_0-9.+]+@[-a-zA-Z_0-9.]+"
+color body       red            default  "(^| )\\*[-a-zA-Z0-9äöüß*]+\\*[,.?]?[ \n]"
+color body       yellow         default  "(^| )_[-a-zA-Z0-9äöüß_]+_[,.?]?[ \n]"
+
+# COLORI SU SFONDO NERO
+
+# colori testo - funzioni generali del programma
+#color normal     brightwhite    black				# testo normale
+#color status     brightyellow   blue				# righe di stato (status bars)
+#color search     brightyellow   red				# ricerche
+#color message    brightyellow   black				# messaggi di informazione di mutt
+#color error      brightred      black				# messaggi di errore di mutt (ultima riga)
+#color markers    brightred      black				# il "+" all'inizio delle righe mandate a capo
+
+# colori testo - message index menu e attachment menu
+#color indicator  brightcyan     blue				# la barra che indica il messaggio attuale
+#color tree       brightred      black				# frecce dei thread
+#color attachment blue           cyan				# allegati MIME
+#color index      blue           black  ~F			# impostato
+#color index      green		 black  ~N			# messaggi nuovi (comando "N", flag visualizzato "N")
+#color index      magenta        black  ~T			# messaggi importanti (comando "F", flag visualizzato "T")
+#color index      cyan           black  ~D			# cancellato
+#color index	  magenta	 black '(~n 1-4)'		# messaggi con score 1-4 (marcati automat. per cancellazione)
+#color index	  green		 black '(~n 5-7)'		# messaggi con score 5-7
+#color index	  brightblue	 black '(~n 8-10)'		# messaggi con score 8-10 (flaggati automaticamente)
+#color index	  white		 black '(~n 11-50)'		# messaggi con score 11-50
+#color index	  brightred	 black '(~n 51-100)'		# messaggi con score 51-100
+
+# colori testo - pager di visualizzazione messaggi
+#color hdrdefault blue           black				# righe degli header (blu/nero: poco visibili)
+#color header     yellow		black "^(from|subject|to):"	# header from: subject: to: (giallo/nero: evidenziati)
+#color bold       green          black				# evidenziazione del grassetto nei body
+#color underline  yellow         black				# evidenziazione del sottolineato nei body
+#color signature  red            black				# firma
+#color tilde      blue           black				# ~ alla fine dei messaggi
+#color quoted     cyan           black				# testo quotato
+#color quoted1    yellow         black				# testo quotato 1° livello 
+#color quoted2    magenta        black				# testo quotato 2° livello
+#color quoted3    red            black
+#color quoted4    red            black
+#color quoted5    red            black
+#color quoted6    red            black
+#color quoted7    red            black
+#color quoted8    red            black
+#color quoted9    red            black
+#color body       brightgreen    black  "((ftp|http|https)://|(file|mailto|news):|www\\.)[-a-zA-Z0-9_.:]\
+#*[a-zA-Z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+#color body       brightred      black  "[-a-zA-Z_0-9.+]+@[-a-zA-Z_0-9.]+"
+#color body       red            black  "(^| )\\*[-a-zA-Z0-9äöüß*]+\\*[,.?]?[ \n]"
+#color body       green          black  "(^| )_[-a-zA-Z0-9äöüß_]+_[,.?]?[ \n]"
+
+# colori testo - pager (URL)
+#color body       cyan           black  "(finger|ftp|http|news|telnet)://[^ >]*"			# generica
+#color body       cyan           black  "<URL:[^ ]*>"							# generica
+#color body       white          blue   "https://[^ >]*"						# https
+#color body       cyan           black  "ftp://[^ ]*"							# ftp
+#color body       green          black  "[[:alnum:]][-+.#_[:alnum:]]*@[-+.[:alnum:]]*[[:alnum:]]"	# http
+#color body       brightred      black  "mailto: *[^ ]+\(\\?subject=[^ ]+\)?"				# mailto
+
+# colori testo - pager (Percorsi, nomi file e variabili)
+#color body       brightgreen    black  "\\~?\(/[-_.,a-zA-Z0-9{}]+\)+"				# nomi file
+#color body       brightgreen    black  "[a-z]:[-_.a-zA-Z0-9\]+"				# nomi file DOS/WIN
+#color body       brightred      black  "\(/[-_.a-zA-Z0-9]+\)+/"				# percorsi
+#color body       brightmagenta  black  "\\$[a-zA-Z][-_a-zA-Z]+"				# variabili
+
+# colori testo - pager (Varie)
+#color body       red            black  "^[*] .*:$"						# riga attribution
+#color body       brightred      black  "[*/_]+ *[- &[:alnum:]]+ *[*/_]+"			# testo enfatizzato
+#color body       yellow         black  "[;:8]-?[)/(|PpDO]"					# smilies vari :-)
+#color body       blue           red    "<[Vv]?[Bb]?[Ee]?[Gg]>"					# grin vari <G>
+#color body       green          black  "\( *[-+=#*~_]\){4,}"					# righe di bordo
+#color body       red            white  "[!?]{3,}"						# esclamazioni ripetute
+#color body       brightgreen    black  "[.0-9]+ ?%"						# percentuali
+#color body       white          blue   "[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}"	# indirizzi IP
+
