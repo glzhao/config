@@ -11,11 +11,8 @@ vim_files = ["_vimrc", "_ycm_extra_conf.py"]
 update_submodules = "git submodule update --init --recursive"
 pull_submodules = "git submodule foreach --recursive git pull origin master"
 
-recive_cmd = 'source ~/.Xdbus; ~/.bin/mail-recive.sh'
-recive_cmt = 'Mail recive job'
-send_cmd = '~/.bin/msmtp-runqueue.sh'
-send_cmt = 'Mail send job'
-
+mail_cmd = 'source ~/.Xdbus; ~/.bin/mail-job.sh'
+mail_cmt = 'Mail job'
 
 def print_usage():
     print >>sys.stderr, "Usage: setup.py \n[-h, --help <show usage>]\n" \
@@ -98,10 +95,9 @@ def setup_vim_plugins():
 def setup_mail_passwd():
     import getpass
     import keyring
-    r = ""
 
-    r == raw_input("Setup passwrd for mail client ? [y]/n:\n")
-    while (r != "n"):
+    r = raw_input("Setup passwrd for mail client ? [y]/n: ")
+    while (r != 'n'):
         server = raw_input("Server: ")
         user = raw_input("User: ")
         pwd = getpass.getpass("Passwrd: ")
@@ -111,25 +107,18 @@ def setup_mail_passwd():
 def setup_mail_crontab():
     cron = crontab.CronTab(user=True)
 
-    jobs = list(cron.find_command(send_cmd))
+    jobs = list(cron.find_command(mail_cmd))
     if len(jobs) is 0:
-        print 'Setting up mail send job'
-        send_job = cron.new(send_cmd, send_cmt)
-        send_job.minute.every(3)
-        cron.write()
-    jobs = list(cron.find_command(recive_cmd))
-    if len(jobs) is 0:
-        print 'Setting up mail recive job'
-        recive_job = cron.new(recive_cmd, recive_cmt)
-        recive_job.minute.every(3)
+        print 'Setting up mail job'
+        mail_job = cron.new(mail_cmd, mail_cmt)
+        mail_job.minute.every(3)
         cron.write()
 
 
 def clear_mail_crontab():
     cron = crontab.CronTab(user=True)
-    print 'Removing mail recive job'
-    cron.remove_all(command = recive_cmd)
-    cron.remove_all(command = send_cmd)
+    print 'Removing mail job'
+    cron.remove_all(command = mail_cmd)
     cron.write()
 
 
