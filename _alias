@@ -12,6 +12,7 @@ alias md='mkdir -p'
 alias rd='rmdir'
 alias psg='ps auxw |grep -i'
 
+alias cd-='cd -'
 alias cdf='cd *$1*/'
 alias ..='cd ..'
 alias ...='cd ../..'
