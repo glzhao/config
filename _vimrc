@@ -104,6 +104,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'Lokaltog/vim-easymotion'
+"TODO
+"Plugin 'fholgado/minibufexpl'
 
 Plugin 'sjl/gundo.vim'
 
