@@ -1,6 +1,6 @@
 [user]
 	name = Guangliang Zhao
-	email = lucienchao@gmail.com 
+	email = lucienchao@gmail.com
 [color]
 	ui = true
 	interactive = auto
@@ -38,3 +38,5 @@
 [push]
 	default = matching
 
+[http]
+	postBuffer = 524288000

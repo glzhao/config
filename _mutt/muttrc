@@ -9,7 +9,7 @@ set header_cache	= "$folder/.header_cache"	# where to store headers
 set message_cachedir	= "$folder/.bodies_cache"	# where to store bodies
 
 source ~/.mutt/personal					# source the personal info
-source ~/.mutt/color.scheme1					# source the color file
+source ~/.mutt/color.scheme2				# source the color file
 source ~/.mutt/maillist					# source the maillist file
 source ~/.mutt/macros					# source the macros file
 source ~/.mutt/scores					# source the scores file
