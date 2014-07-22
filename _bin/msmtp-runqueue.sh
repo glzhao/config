@@ -26,7 +26,7 @@ if [ -e "$LOCKFILE" ]; then
 	exit 1
 fi
 
-# change into $QUEUEDIR 
+# change into $QUEUEDIR
 cd "$QUEUEDIR" || exit 1
 
 # check for empty queuedir

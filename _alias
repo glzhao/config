@@ -44,18 +44,19 @@ alias fg='find . -type f -print0 | xargs -0 -e egrep -n --color=auto'
 
 #alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias webshare='$(which python) -m SimpleHTTPServer ${1:-8000}'
+alias tmux="tmux -2"
 
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 #############################################################
-# -- work related 
+# -- work related
 
 alias iosc='osc -A https://api.suse.de'
 alias oosc='osc -A https://api.opensuse.org'
 
 #############################################################
-# -- other settings 
+# -- other settings
 
 alias beep='echo -en "\007"'
 alias o='less'
@@ -71,7 +72,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias clean_pycs='find . -name "*.pyc" -exec rm {} \;'
 
 #############################################################
-# -- functions 
+# -- functions
 
 whatsmy_primary_ip() {
 	local _if="$(netstat -nr | grep ^0\.0\.0\.0 | awk '{print $8}')"

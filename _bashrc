@@ -141,7 +141,7 @@ esac
 _complete_hosts () {
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    host_list=`{ 
+    host_list=`{
         for c in /etc/ssh_config /etc/ssh/ssh_config ~/.ssh/config
         do [ -r $c ] && sed -n -e 's/^Host[[:space:]]//p' -e 's/^[[:space:]]*HostName[[:space:]]//p' $c
         done

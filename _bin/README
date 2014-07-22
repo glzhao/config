@@ -16,15 +16,15 @@ all later when you are online (by running msmtp-runqueue.sh).
    This script will save two files for each mail: one contains the mail, the
    other one contains the command line for msmtp (including options and the
    recipients). Thus you can use all msmtp options with this script.
-   
+
    Example (using Mutt):
-     In your Mutt configuration file, replace 
+     In your Mutt configuration file, replace
      set sendmail="/path/to/msmtp [options]"
      with
      set sendmail="/path/to/msmtp-enqueue.sh [options]"
-   
+
    This script cannot detect errors in its command line or the msmtp
-   configuration file. You won't see error messages before msmtp-runqueue.sh 
+   configuration file. You won't see error messages before msmtp-runqueue.sh
    runs msmtp to send the mails. So test your msmtp configuration before using
    msmtp-enqueue.sh.
 

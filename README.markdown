@@ -16,10 +16,10 @@ becomes
 
 So, just add a `_*` style file, if you want new configuration files.
 
-## Install softwares 
+## Install softwares
 
 Run and follow the prompts:
-	
+
 	./bootstrap.sh
 	./setup.py -t all
 
@@ -29,7 +29,7 @@ Use the following command if you just want vim:
 
 Or restore the original files
 
-    ./setup.py -t restore 
+    ./setup.py -t restore
 
 ## Others
 
@@ -37,14 +37,14 @@ Or restore the original files
 
 This suit configurations need the following softwares:
 
-* git, vim, tmux 
-* mutt, offlineimap, msmtp, python, keyring(python module) 
-* irssi, gnupg 
+* git, vim, tmux
+* mutt, offlineimap, msmtp, python, keyring(python module)
+* irssi, gnupg
 
 ### Setting passord for mail client manually
 
 This step is mainly for offlineimap and mstp, and the parameters are based on
-the configuration files(.msmtprc and .offlineimaprc). For instance: 
+the configuration files(.msmtprc and .offlineimaprc). For instance:
 
 	$ python -c "import keyring; keyring.set_password('mstp.gmail.com', 'user', 'PASSWORD')"
 	# Test that the password is successfully stored:
