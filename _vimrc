@@ -123,7 +123,7 @@ Bundle 'phd'
 Plugin 'SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'glzhao/vim-snippets'
 
 Plugin 'c.vim'
 Plugin 'plasticboy/vim-markdown'
