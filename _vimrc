@@ -126,6 +126,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'glzhao/vim-snippets'
 
 Plugin 'c.vim'
+Plugin 'google.vim'
 Plugin 'plasticboy/vim-markdown'
 
 "TODO
