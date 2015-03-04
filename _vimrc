@@ -125,9 +125,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'glzhao/vim-snippets'
 
-Plugin 'c.vim'
+"Plugin 'c.vim'
 Plugin 'google.vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'nvie/vim-flake8'
 
 "TODO
 Plugin 'sorah/presen.vim'
@@ -669,12 +670,12 @@ augroup ft_c
     autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
-augroup ft_cpp
-    autocmd!
-    autocmd Filetype cpp setlocal cindent noexpandtab softtabstop=8 tabstop=8 shiftround shiftwidth=8
-    autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
-    autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
-augroup END
+"augroup ft_cpp
+"    autocmd!
+"    autocmd Filetype cpp setlocal cindent noexpandtab softtabstop=2 tabstop=2 shiftround shiftwidth=2
+"    autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
+"    autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
+"augroup END
 
 " Markdown
 augroup ft_markdown
