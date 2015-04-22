@@ -129,6 +129,7 @@ Plugin 'glzhao/vim-snippets'
 Plugin 'google.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'nvie/vim-flake8'
+Plugin 'fatih/vim-go'
 
 "TODO
 Plugin 'sorah/presen.vim'
