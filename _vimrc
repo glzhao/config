@@ -613,6 +613,14 @@ let g:vim_markdown_initial_foldlevel=1
 " "[]: go to previous sibling header if any.
 " "]c: go to Current header.
 " "]u: go to parent header (Up).
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" fatih/vim-go
+"--------------------------------------------------
+"Enable auto fmt on save, 0 for disable
+let g:go_fmt_autosave = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
 " => cscope
@@ -711,4 +719,25 @@ augroup ft_python
     " code folder
     "autocmd FileType python setlocal foldmethod=indent
     "set foldlevel=99 "默认展开所有代码
+augroup END
+
+" Python
+augroup ft_golang
+	autocmd!
+	au FileType go nmap <leader>gr <Plug>(go-run)
+	au FileType go nmap <leader>gb <Plug>(go-build)
+	au FileType go nmap <leader>gt <Plug>(go-test)
+	au FileType go nmap <leader>gc <Plug>(go-coverage)
+
+	au FileType go nmap <Leader>gds <Plug>(go-def-split)
+	au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
+	au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
+
+	au FileType go nmap <Leader>gd <Plug>(go-doc)
+	au FileType go nmap <Leader>gdb <Plug>(go-doc-browser)
+	au FileType go nmap <Leader>gdv <Plug>(go-doc-vertical)
+
+	au FileType go nmap <Leader>gs <Plug>(go-implements)
+	au FileType go nmap <Leader>gi <Plug>(go-info)
+	au FileType go nmap <Leader>ge <Plug>(go-rename)
 augroup END
