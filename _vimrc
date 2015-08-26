@@ -679,12 +679,12 @@ augroup ft_c
     autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
-"augroup ft_cpp
-"    autocmd!
-"    autocmd Filetype cpp setlocal cindent noexpandtab softtabstop=2 tabstop=2 shiftround shiftwidth=2
-"    autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
-"    autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
-"augroup END
+augroup ft_cpp
+    autocmd!
+    autocmd Filetype cpp setlocal cindent expandtab softtabstop=2 tabstop=2 shiftround shiftwidth=2
+    autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
+    autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
+augroup END
 
 " Markdown
 augroup ft_markdown
