@@ -156,7 +156,9 @@ _complete_hosts () {
 complete -F _complete_hosts ssh
 complete -F _complete_hosts host
 
-export PATH=$HOME/.rvm/bin:$HOME/.bin:$PATH:/sbin:/usr/sbin
+export PATH=$HOME/.bin:$PATH:/sbin:/usr/sbin
+
+source ~/.bashrc.local || true
 
 test -s ~/.alias && source ~/.alias || true
 test -s ~/.git-completion.bash && source ~/.git-completion.bash || true

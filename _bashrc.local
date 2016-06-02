@@ -1,0 +1,3 @@
+export GOROOT=/usr/local/go
+export PATH=$GOROOT/bin:$HOME/.rvm/bin:$HOME/.bin:$PATH:/sbin:/usr/sbin
+
