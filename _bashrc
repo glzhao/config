@@ -158,8 +158,7 @@ complete -F _complete_hosts host
 
 export PATH=$HOME/.bin:$PATH:/sbin:/usr/sbin
 
-source ~/.bashrc.local || true
-
+test -s ~/.bashrc.local && source ~/.bashrc.local || true
 test -s ~/.alias && source ~/.alias || true
 test -s ~/.git-completion.bash && source ~/.git-completion.bash || true
 test -s ~/.git-prompt.sh && source ~/.git-prompt.sh || true
