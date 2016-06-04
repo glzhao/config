@@ -203,7 +203,6 @@ set number			" Show line numbers
 set linebreak			" don't wrap textin the middle of a word
 set showmatch			" Show matching brackets/parenthesis
 
-set fillchars=diff:⣿,vert:│	" Change fillchars
 set formatoptions+=rnlmM	" Optimize format options
 
 set showcmd			" Show cmd
@@ -233,8 +232,8 @@ autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cu
 " Only show trailing whitespace when not in insert mode with :l[ist]
 augroup trailing
 	autocmd!
-	autocmd InsertEnter * :set listchars-=trail:⌴
-	autocmd InsertLeave * :set listchars+=trail:⌴
+	autocmd InsertEnter * :set listchars-=trail:_
+	autocmd InsertLeave * :set listchars+=trail:_
 augroup END
 
 if has('gui_running')
@@ -291,12 +290,6 @@ if has("multi_byte")
 		set encoding=chinese
 		set termencoding=chinese
 		set fileencoding=chinese
-	elseif v:lang =~ "^zh_TW"
-		" cp950, big5 or euc-tw
-		" Are they equal to each other?
-		set encoding=taiwan
-		set termencoding=taiwan
-		set fileencoding=taiwan
 	endif
 	" Detect UTF-8 locale, and replace CJK setting if needed
 	if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
@@ -402,8 +395,7 @@ nnoremap g# g#zzzv
 nmap <F4> :YcmDiags<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
-" symbol for errors and warnings
-let g:ycm_error_symbol='>>'
+" symbol for warnings
 let g:ycm_warning_symbol='>*'
 
 " YCM will show the completion menu even when typing inside comments
@@ -422,7 +414,6 @@ let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
       \ 'notes' : 1,
-      \ 'markdown' : 1,
       \ 'unite' : 1,
       \ 'text' : 1,
       \ 'vimwiki' : 1,
@@ -681,7 +672,7 @@ augroup END
 
 augroup ft_cpp
     autocmd!
-    autocmd Filetype cpp setlocal cindent expandtab softtabstop=2 tabstop=2 shiftround shiftwidth=2
+    autocmd Filetype cpp setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
     autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
     autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
@@ -711,7 +702,7 @@ augroup END
 " Python
 augroup ft_python
     autocmd!
-    au FileType python setlocal smartindent expandtab shiftwidth=4 tabstop=8 softtabstop=4 colorcolumn=80
+    au FileType python setlocal smartindent expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=80
     au Filetype python setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
     au BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
