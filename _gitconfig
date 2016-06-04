@@ -13,18 +13,36 @@
 	whitespace = fix
 [alias]
 	co = checkout
+    	cob = checkout -b
 	ci = commit -s
-	di = diff
-	st = status
-	review = review 
+
 	b = branch
-	l = log
+    	ba = branch -a
+    	bd = branch -d
+    	bD = branch -D
+
+	di = diff
+    	ds = diff --staged
+
+    	st = status
+
+    	f = fetch -p
+    	p = push
+
 	ls = ls-files
+
+	l = log
+	plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+	tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    	rank = shortlog -sn --no-merges
+
 	diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+    	bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+
 [sendemail]
 	smtpencryption = tls
 	smtpserver = /usr/bin/msmtp
