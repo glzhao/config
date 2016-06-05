@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -158,6 +158,7 @@ complete -F _complete_hosts host
 
 export PATH=$HOME/.bin:$PATH:/sbin:/usr/sbin
 
+test -s ~/.bashrc.addon && source ~/.bashrc.addon || true
 test -s ~/.bashrc.local && source ~/.bashrc.local || true
 test -s ~/.alias && source ~/.alias || true
 test -s ~/.git-completion.bash && source ~/.git-completion.bash || true

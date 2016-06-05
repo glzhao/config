@@ -16,7 +16,7 @@ rust_packages=('rustc' 'cargo')
 
 ycm_packages=('cmake' 'build-essential' 'python-dev' 'python3-dev')
 
-common_links=('_alias' '_bashrc' '_tmux.conf' '_irssi' '_bin' 		\
+common_links=('_alias' '_bashrc' '_bashrc.addon' '_tmux.conf' '_irssi' '_bin' 		\
 		'_git-completion.bash' '_gitconfig' '_git-prompt.sh')
 
 vim_links=('_vimrc' '_ycm_extra_conf.py')
