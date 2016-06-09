@@ -276,28 +276,11 @@ nmap <leader>ss :call SplitScroll()<CR>
 "-------------------------------------------------
 " => Platform and encoding Configuration
 "-------------------------------------------------
-" TODO:take care of the encodings
-set fileencodings=ucs-bom,utf-8,GBK,latin1
+set encoding=utf-8
+"chinese is gb2313 in unix, cp936 in windows
+set fileencodings=ucs-bom,utf-8-bom,utf-8,chinese,gb18030,big5,euc-jp,sjis,euc-kr,ucs-2le,latin1
+let termencoding=substitute($LANG, "[a-zA-Z_-]*\.", "", "")  " set term encoding according to system locale
 set fileformats=unix,mac,dos	" Auto detect the file formats
-
-" multi-encoding setting
-if has("multi_byte")
-	" set bomb
-	" set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,sjis,euc-kr,ucs-2le,latin1
-	" CJK environment detection and corresponding setting
-	if v:lang =~ "^zh_CN"
-		" Use cp936 to support GBK, euc-cn == gb2312
-		set encoding=chinese
-		set termencoding=chinese
-		set fileencoding=chinese
-	endif
-	" Detect UTF-8 locale, and replace CJK setting if needed
-	if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-		set encoding=utf-8 " Set utf-8 encoding
-		set termencoding=utf-8
-		set fileencodings=ucs-bom,utf-8,GBK,latin1
-	endif
-endif
 
 " For windows
 if MySys() == 'windows'
