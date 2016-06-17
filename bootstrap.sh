@@ -2,7 +2,8 @@
 set -e
 
 common_packages=('git' 'vim' 'cscope' 'cgvg' 'subversion'		\
-		'tmux' 'irssi' 'gnupg' 'openssh-server')
+		'tmux' 'irssi' 'gnupg' 'openssh-server'			\
+		'zsh' 'autojump')
 
 mail_packages=('msmtp' 'offlineimap' 'mutt' 'getmail')
 # another software: chrome, sogou pingying
@@ -19,6 +20,7 @@ ycm_packages=('cmake' 'build-essential' 'python-dev' 'python3-dev')
 common_links=('_alias' '_bashrc' '_bashrc.addon' '_tmux.conf' '_irssi' '_bin' 		\
 		'_git-completion.bash' '_gitconfig' '_git-prompt.sh')
 
+zsh_links=('_oh-my-zsh' '_zshrc')
 vim_links=('_vimrc' '_ycm_extra_conf.py')
 mail_links=('_getmail' '_msmtprc' '_offlineimaprc' '_mutt')
 
@@ -38,6 +40,7 @@ function usage()
 	echo "-m	install mail related packages, such as mutt, offlinemap etc."
 	echo "-p	install python related packages and python modules"
 	echo "-r	install rust related packages"
+	echo "-z	install oh-my-szh related packages and change default shell"
 	echo "-s	restore all installed links"
 	echo "-h"
 }
@@ -142,8 +145,16 @@ function setup_python()
 
 function setup_vim()
 {
+	echo "Link vim configs and setup plugins"
 	setup_links ${vim_links[*]}
 	setup_vim_plugins
+}
+
+function setup_zsh()
+{
+	echo "Link oh-my-zsh configs and change default shell"
+	setup_links ${zsh_links[*]}
+	sudo chsh -s $(grep /zsh$ /etc/shells | tail -1)
 }
 
 function setup_mail()
@@ -157,7 +168,7 @@ function setup_mail()
 
 function restore_all()
 {
-	echo "restore all old files"
+	echo "Restore all old files"
 	restore_links ${common_links[*]} ${vim_links[*]} ${mail_links[*]}
 }
 
@@ -165,13 +176,14 @@ function main()
 {
 	update_packagers_by_platform
 
-	while getopts "dbvDmprsh" arg
+	while getopts "dbvDmprzsh" arg
 	do
 		case $arg in
 		     d)
 			setup_base
 			setup_rust
 			setup_vim
+			setup_zsh
 			;;
 		     b)
 			setup_base
@@ -192,6 +204,9 @@ function main()
 			;;
 		     r)
 			setup_rust
+			;;
+		     z)
+			setup_zsh
 			;;
 		     s)
 			restore_all

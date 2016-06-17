@@ -21,7 +21,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 alias la='ls -la --color'
-alias ll='ls -alF --color'
+alias ll='ls -lF --color'
 alias ls='ls  --color $LS_OPTIONS'
 alias ls-l='ls -l --color'
 alias dir='ls -l --color'
