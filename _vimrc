@@ -123,7 +123,7 @@ Bundle 'phd'
 Plugin 'SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'glzhao/vim-snippets'
+Plugin 'SirVer/vim-snippets'
 
 "Plugin 'c.vim'
 Plugin 'google.vim'
@@ -325,12 +325,12 @@ endif
 set autoindent		" Preserve current indent on new lines
 set smartindent		" use smart indent if there is no indent file
 
-" keep 'tabstop' at 8, set 'softtabstop' and 'shiftwidth' to 4 (or whatever you prefer)
+" keep 'tabstop' at 4, set 'softtabstop' and 'shiftwidth' to 4 (or whatever you prefer)
 " and use 'noexpandtab'. Then Vim will use a mix of tabs and spaces, but typing <Tab>
 " and <BS> will behave like a tab appears every 4 (or whatever you set before) characters.
-set noexpandtab tabstop=8 softtabstop=8
+set expandtab tabstop=4 softtabstop=4
 " Round indent to multiple of 'shiftwidth, used for cindent, >>, <<, etc
-set shiftround shiftwidth=8
+set shiftround shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "-------------------------------------------------
 " => Auto complete in VIM
@@ -648,7 +648,7 @@ endif
 " C
 augroup ft_c
     autocmd!
-    autocmd Filetype c setlocal cindent noexpandtab softtabstop=8 tabstop=8 shiftround shiftwidth=8
+    autocmd Filetype c setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
     autocmd Filetype c setlocal textwidth=80 colorcolumn=81
     autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
