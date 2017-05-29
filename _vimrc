@@ -114,6 +114,7 @@ Plugin 'TaskList.vim'
 
 Plugin 'IndexedSearch'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rizzatti/dash.vim'
 
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
@@ -256,10 +257,13 @@ endif
 " => Functions
 "--------------------------------------------------
 function! MySys()
+    let s:uname = system("echo -n \"$(uname)\"")
+    if !v:shell_error && s:uname == "Darwin"
+        return "mac"
     if has("win32") || has('win64')
-	return "windows"
+	    return "windows"
     else
-	return "linux"
+	    return "linux"
     endif
 endfunction
 
@@ -552,6 +556,11 @@ let delimitMate_balance_matchpairs=1
 " inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
+" => dash.vim
+"--------------------------------------------------
+map <silent> <leader>d <Plug>DashSearch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
 " => IndexedSearch
 "--------------------------------------------------
 let g:indexed_search_shortmess=1
@@ -600,12 +609,13 @@ let g:go_fmt_autosave = 1
 " => cscope
 "--------------------------------------------------
 if has("cscope")
-
     """"""""""""" Standard cscope/vim boilerplate
     if MySys() == "linux"
-      set csprg=/usr/bin/cscope
+        set csprg=/usr/bin/cscope
+    elseif MySys() == "mac"
+        set csprg=/usr/local/bin/cscope
     else
-      set csprg=cscope
+        set csprg=cscope
     endif
 
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
