@@ -123,8 +123,11 @@ Bundle 'phd'
 
 Plugin 'SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+"need vim with lua
+"Plugin 'jeaye/color_coded'
 
 "Plugin 'c.vim'
 Plugin 'google.vim'

@@ -27,6 +27,7 @@ RUN set -x \
 # base image
 ##############################################################################
 RUN set -x \
+        && apt-get -qq install apt-utils sudo \
         && apt-get install -qqy tmux irssi gnupg openssh-server \
         && apt-get install -qqy git vim cscope cgvg subversion ack-grep exuberant-ctags \
         && apt-get install -qqy python-pip ipython
@@ -58,7 +59,8 @@ RUN apt-get install -qqy golang
 ##############################################################################
 USER root
 RUN set -x \
-        && apt-get install -qqy cmake build-essential python-dev python3-dev
+        && apt-get install -qqy software-properties-common wget curl man unzip nano colord rsync \
+        && apt-get install -qqy make cmake clang build-essential python-dev python3-dev
 
 USER glzhao
 RUN set -x \
@@ -80,10 +82,15 @@ RUN cd ~/.vim/bundle/YouCompleteMe/ \
 USER root
 RUN set -x \
         && apt-get install -qqy zsh autojump \
+        && chsh -s /bin/zsh glzhao
+
+USER glzhao
+RUN set -x \
+        && cd /home/glzhao/repos/config/ && git submodule update --init --recursive
+
+RUN set -x \
         && ln -s /home/glzhao/repos/config/_zshrc /home/glzhao/.zshrc \
         && ln -s /home/glzhao/repos/config/_oh-my-zsh /home/glzhao/.oh-my-zsh
-
-RUN chsh -s /bin/zsh
 
 ##############################################################################
 # start
