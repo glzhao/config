@@ -124,7 +124,7 @@ Bundle 'phd'
 Plugin 'SingleCompile'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
-Plugin 'SirVer/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 "Plugin 'c.vim'
 Plugin 'google.vim'
@@ -260,6 +260,7 @@ function! MySys()
     let s:uname = system("echo -n \"$(uname)\"")
     if !v:shell_error && s:uname == "Darwin"
         return "mac"
+    endif
     if has("win32") || has('win64')
 	    return "windows"
     else
