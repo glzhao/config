@@ -663,15 +663,15 @@ endif
 augroup ft_c
     autocmd!
     autocmd Filetype c setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
-    autocmd Filetype c setlocal textwidth=80 colorcolumn=81
-    autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
+    autocmd Filetype c setlocal textwidth=80
+    " autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
 augroup ft_cpp
     autocmd!
     autocmd Filetype cpp setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
-    autocmd Filetype cpp setlocal textwidth=80 colorcolumn=81
-    autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
+    autocmd Filetype cpp setlocal textwidth=80
+    " autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
 " Markdown
