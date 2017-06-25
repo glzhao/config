@@ -663,14 +663,14 @@ endif
 augroup ft_c
     autocmd!
     autocmd Filetype c setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
-    autocmd Filetype c setlocal textwidth=80
+    autocmd Filetype c setlocal
     " autocmd Filetype c hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
 augroup ft_cpp
     autocmd!
     autocmd Filetype cpp setlocal cindent expandtab softtabstop=4 tabstop=4 shiftround shiftwidth=4
-    autocmd Filetype cpp setlocal textwidth=80
+    autocmd Filetype cpp setlocal
     " autocmd Filetype cpp hi ColorColumn ctermbg=lightRed guibg=lightRed
 augroup END
 
@@ -699,7 +699,7 @@ augroup END
 " Python
 augroup ft_python
     autocmd!
-    au FileType python setlocal smartindent expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=80
+    au FileType python setlocal smartindent expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au Filetype python setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
     au BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
