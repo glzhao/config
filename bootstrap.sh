@@ -111,14 +111,17 @@ function setup_vim_plugins()
 		&& ./install.sh --clang-completer --gocode-completer --racer-completer
 }
 
-function setup_base()
+function setup_packages()
 {
 	echo "Installing" ${common_packages[*]}
 	sudo ${packager}  ${common_packages[*]}
 
 	echo "Installing platform independence packages" ${packages_pip[*]}
 	sudo ${packager} ${packages_pip[*]}
+}
 
+function setup_base()
+{
 	setup_links ${common_links[*]}
 }
 
@@ -180,16 +183,21 @@ function main()
 	do
 		case $arg in
 		     d)
+			setup_packages
 			setup_base
 			setup_rust
 			setup_vim
 			setup_zsh
+			;;
+		     P)
+			setup_packages
 			;;
 		     b)
 			setup_base
 			;;
 		     v)
 			# must setup base first
+			setup_packages
 			setup_base
 			setup_vim
 			;;
