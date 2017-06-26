@@ -105,6 +105,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'Lokaltog/vim-easymotion'
 "TODO
+"plugin 'tpope/vim-surround'
+"Plugin 'godlygeek/tabular'
+"Plugin 'vim-scripts/ShowMarks'
+"Plugin 'vim-scripts/VisIncr'
 "Plugin 'fholgado/minibufexpl'
 
 Plugin 'sjl/gundo.vim'
@@ -140,6 +144,12 @@ Plugin 'sorah/presen.vim'
 "Plugin 'vimwiki/vimwiki'
 
 "Plugin 'tpope/vim-fugitive'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'mattn/gist-vim'
+"
+"TODO
+"Plugin 'scrooloose/nerdcommenter'
+"
 "Plugin 'swaroopch/vim-markdown-preview'
 "Plugin 'python.vim--Vasiliev'
 " pep8
