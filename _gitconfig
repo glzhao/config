@@ -12,36 +12,35 @@
 [apply]
 	whitespace = fix
 [alias]
-	co = checkout
-    	cob = checkout -b
-	ci = commit -s
+    co  = checkout       # Checkout a branch
+    cob = checkout -b    # Checkout a new not yet existing branch
+    f   = fetch -p       # Fetch from a repository and prune any remote-tracking references that no longer exist on the remote.
+    ci  = commit         # Commit you changes
+    p   = push           # Push you changes to a remote
 
-	b = branch
-    	ba = branch -a
-    	bd = branch -d
-    	bD = branch -D
+    b = branch
+    ba  = branch -a      # List both remote-tracking branches and local branches.
+    bd  = branch -d      # Delete a branch only if it has been merged
+    bD  = branch -D      # Force delete a branch
 
-	di = diff
-    	ds = diff --staged
+    dc  = diff --cached  # Display the staged changes
+    ds = diff --staged
+    di = diff
 
-    	st = status
+    st = status
 
-    	f = fetch -p
-    	p = push
-
-	ls = ls-files
-
-	l = log
-	plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
-	tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-    	rank = shortlog -sn --no-merges
-
-	diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
-	up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-    	bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+    l = log
+    ls = log --graph --color --stat --oneline
+    plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+    tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    rank = shortlog -sn --no-merges
+    bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+    
+    diverges = !bash -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+    up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 
 [sendemail]
 	smtpencryption = tls
