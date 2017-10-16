@@ -181,18 +181,18 @@ function main()
 		case $arg in
 		     d)
 			setup_base
-			setup_rust
-			setup_vim
+			#setup_rust
+			#setup_vim
 			setup_zsh
 			;;
 		     b)
 			setup_base
 			;;
-		     v)
-			# must setup base first
-			setup_base
-			setup_vim
-			;;
+		     #v)
+		     #   # must setup base first
+		     #   setup_base
+		     #   setup_vim
+		     #   ;;
 		     D)
 			setup_desktop
 			;;
