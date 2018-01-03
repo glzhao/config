@@ -11,13 +11,13 @@ desktop_packages=('retext' 'goldendict' 'mplayer' 'unrar'		\
 		  'w3m' 'sysstat' 'pidgin' 'nautilus-dropbox')
 
 python_packages=('python-dev' 'python-pip' 'ipython')
-python_modules=('pep8' 'keyring')
+python_modules=('cheat' 'cppman' 'pep8' 'keyring')
 
 rust_packages=('rustc' 'cargo')
 
 ycm_packages=('cmake' 'build-essential' 'python-dev' 'python3-dev')
 
-common_links=('_alias' '_bashrc' '_bashrc.addon' '_tmux.conf' '_irssi' '_bin' 		\
+common_links=('_alias' '_bashrc' '_bashrc.addon' '_tmux.conf' '_irssi' '_bin' 	'_cheat'	\
 		'_git-completion.bash' '_git-completion.zsh' '_gitconfig' '_git-prompt.sh')
 
 zsh_links=('_oh-my-zsh' '_zshrc')

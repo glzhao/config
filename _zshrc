@@ -84,6 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR=$(which vim)
+export CHEATCOLORS=true
 test -s ~/.alias && source ~/.alias || true
 test -s ~/.bashrc.local && source ~/.bashrc.local || true
 test -s ~/.git-completion.zsh && source ~/.git-completion.zsh || true

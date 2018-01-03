@@ -1,0 +1,13 @@
+# loop read file
+cat afile | while read oneline
+do
+	echo $oneline
+done
+
+# loop n times
+i="0"
+while [ $i -lt 4 ]
+do
+    xterm &
+    i=$[$i+1]
+done

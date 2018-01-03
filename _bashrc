@@ -157,6 +157,7 @@ complete -F _complete_hosts ssh
 complete -F _complete_hosts host
 
 export PATH=$HOME/.bin:$PATH:/sbin:/usr/sbin
+export CHEATCOLORS=true
 
 test -s ~/.bashrc.addon && source ~/.bashrc.addon || true
 test -s ~/.bashrc.local && source ~/.bashrc.local || true
