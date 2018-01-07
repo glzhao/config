@@ -1,3 +1,0 @@
-set from=lucienchao@gmail.com
-set realname="Guangliang Zhao"
-set sendmail = "msmtp-enqueue.sh -a lucienchao@gmail.com"

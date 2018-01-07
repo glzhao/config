@@ -3,132 +3,39 @@
 # setup personal working environment
 import os
 import sys
-import subprocess
-import crontab
+import argparse
 
-vim_files = ["_vimrc", "_ycm_extra_conf.py"]
+Packages = ['all', 'common', 'git', 'tmux', 'zsh', 'bash', 'cheat', 'cppman']
 
-update_submodules = "git submodule update --init --recursive"
-pull_submodules = "git submodule foreach --recursive git pull origin master"
+Links = {
+        'common'    : ['_alias', '_sh.common', '_bin'],
+        'git'       : ['_gitconfig', '_git-prompt.sh'],
+        'tmux'      : ['_tmux.conf'],
+        'zsh'       : ['_zshrc', '_oh-my-zsh', '_git-completion.zsh'],
+        'bash'      : ['_bashrc', '_git-completion.bash'],
+        'cheat'     : ['_cheat']
+        }
 
-mail_cmd = 'source ~/.Xdbus; ~/.bin/mail-job.sh'
-mail_cmt = 'Mail job'
+Binarys = {
+        'common'    : ['vim', 'cscope', 'ctags', 'cgvg'],
+        'ipython'   : ['ipython'],
+        'git'       : ['git'],
+        'tmux'      : ['tmux'],
+        'zsh'       : ['zsh']
+        }
 
-def print_usage():
-    print >>sys.stderr, "Usage: setup.py \n[-h, --help <show usage>]\n" \
-    "[-t, --target <install which, 'vim' 'all' and 'restore' supported now>]\n"
+Python_modules = {
+        'cheat'     : ['cheat'],
+        'cppman'    : ['cppman']
+        }
 
-
-def parse_opts():
-    import getopt
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "ht:",  ["target"])
-        for o, a in opts:
-            if o in ("-t", "--target"):
-                target = a.strip()
-            if o in ("-h", "--help"):
-                print_usage()
-                sys.exit(2)
-    except:
-        print_usage()
-        sys.exit(2)
-
-    if target != "all" and target != "vim" and target != "restore":
-        print >>sys.stdout, "Doesn't support others except vim, all and restore\n"
-        sys.exit(2)
-    return target
-
-def local_check_output(*popenargs, **kwargs):
-    r"""Run command with arguments and return its output as a byte string.
-
-    If the exit code was non-zero it raises a CalledProcessError.  The
-    CalledProcessError object will have the return code in the returncode
-    attribute and output in the output attribute.
-
-    The arguments are the same as for the Popen constructor.  Example:
-
-    >>> check_output(["ls", "-l", "/dev/null"])
-    'crw-rw-rw- 1 root root 1, 3 Oct 18  2007 /dev/null\n'
-
-    The stdout argument is not allowed as it is used internally.
-    To capture standard error in the result, use stderr=STDOUT.
-
-    >>> check_output(["/bin/sh", "-c",
-    ...               "ls -l non_existent_file ; exit 0"],
-    ...              stderr=STDOUT)
-    'ls: non_existent_file: No such file or directory\n'
-    """
-    if 'stdout' in kwargs:
-        raise ValueError('stdout argument not allowed, it will be overridden.')
-    process = subprocess.Popen(stdout=subprocess.PIPE, *popenargs, **kwargs)
-    output, unused_err = process.communicate()
-    retcode = process.poll()
-    if retcode:
-        cmd = kwargs.get("args")
-        if cmd is None:
-            cmd = popenargs[0]
-        raise subprocess.CalledProcessError(retcode, cmd, output=output)
-    return output
-
-
-def setup_YCM():
-# TODO check vim version and features
-#    if version of vim is lower than 7.3.584:
-#        break
-#    if !vim has (python):
-#        break
-
-    old_path = os.getcwd()
-    dst = os.path.join(os.path.expanduser("~"), '.vim/bundle/YouCompleteMe/')
-    print dst
-    os.chdir(dst)
-    os.system(update_submodules)
-    os.system("./install.sh --clang-completer")
-    os.chdir(old_path)
-
-def setup_vim_plugins():
-    vimrc = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_vimrc")
-    os.system("vim -u %s +PluginInstall +qall" % (vimrc))
-    setup_YCM()
-
-
-def setup_mail_passwd():
-    import getpass
-    import keyring
-
-    r = raw_input("Setup passwrd for mail client ? [y]/n: ")
-    while (r != 'n'):
-        server = raw_input("Server: ")
-        user = raw_input("User: ")
-        pwd = getpass.getpass("Passwrd: ")
-        keyring.set_password(server, user, pwd)
-        r = raw_input("More servers ? [y]/n:")
-
-def setup_mail_crontab():
-    cron = crontab.CronTab(user=True)
-
-    jobs = list(cron.find_command(mail_cmd))
-    if len(jobs) is 0:
-        print 'Setting up mail job'
-        mail_job = cron.new(mail_cmd, mail_cmt)
-        mail_job.minute.every(3)
-        cron.write()
-
-
-def clear_mail_crontab():
-    cron = crontab.CronTab(user=True)
-    print 'Removing mail job'
-    cron.remove_all(command = mail_cmd)
-    cron.write()
-
-
-def setup_mail():
-    xdbus = os.path.join(os.path.expanduser("~"), '.Xdbus')
-    if not os.path.exists(xdbus):
-        old_path = os.getcwd()
-        os.chdir(os.path.dirname(os.path.abspath(__file__)))
-        os.system("./_bin/export_x_info.sh")
-        os.chdir(old_path)
+def get_package_manager():
+    if sys.platform.startswith('darwin'):
+        return 'brew install'
+    elif sys.platform.startswith('cygwin') or sys.platform.startswith('win'):
+        return None
+    elif sys.platform.startswith('linux'):
+        return 'sudo yum install -y'
 
 def link(files):
     for f in files:
@@ -155,39 +62,55 @@ def restore(files):
         if os.path.exists(dst + '.df.bak'):
             os.rename(dst + '.df.bak', dst)
 
+def install_package(pkg):
+    if pkg in Links:
+        link(Links[pkg])
+
+    pkg_manager = get_package_manager()
+    if Binarys.has_key(pkg) and pkg_manager is not None:
+        for binary in Binarys[pkg]:
+            cmd = pkg_manager + ' ' + binary
+            ret = os.system(cmd)
+            if ret is 0:
+                print("install %s successfully" % binary)
+            else:
+                print("install %s failed" % binary)
+
+    if Python_modules.has_key(pkg):
+        for module in Python_modules[pkg]:
+            cmd = 'pip install ' + module
+            ret = os.system(cmd)
+            if ret is 0:
+                print("install %s successfully" % module)
+            else:
+                print("install %s failed" % module)
+
+def uninstall_package(pkg):
+    if pkg in Links:
+        restore(Links[pkg])
+
 if __name__ == "__main__":
-    target = parse_opts()
+    parser=argparse.ArgumentParser(description='''Instal packages and links''')
+    parser.add_argument('-p', '--package', action='append', nargs=1, choices=Packages, required=True,
+            help='module will be in action, set all first time', metavar=Packages)
+    parser.add_argument('-a', '--action', nargs=1, choices=['install', 'restore'],
+            help='action type, install or restore', default='install')
 
-    # To compatbile with older python (<2.7)
-    if not 'check_output' in dir(subprocess):
-        subprocess.check_output = local_check_output
-
-    IGNORE = open("/dev/null", "w")
-    stored_dir = os.getcwd()
-
-    print target
-    if target == "vim":
-        link(vim_files)
-        setup_vim_plugins()
-    elif target == "all":
-        path = os.path.dirname(os.path.abspath(__file__))
-        all_files = os.listdir(path)
-        for f in all_files:
-            if f[0] != '_':
-                all_files.remove(f)
-        link(all_files)
-        setup_vim_plugins()
-        setup_mail_passwd()
-        setup_mail()
-        setup_mail_crontab()
+    pkgs = []
+    if ['all'] in parser.parse_args().package:
+        pkgs = Packages[1:];
     else:
-        path = os.path.dirname(os.path.abspath(__file__))
-        all_files = os.listdir(path)
-        for f in all_files:
-            if f[0] != '_':
-                all_files.remove(f)
-        restore(all_files)
-        clear_mail_crontab()
+        for i in parser.parse_args().package:
+            pkgs += i;
+
+    print pkgs
+    stored_dir = os.getcwd()
+    for pkg in pkgs:
+        if 'restore' in parser.parse_args().action:
+            uninstall_package(pkg)
+            #print("restore package %s successfully" % pkg)
+        else:
+            install_package(pkg)
+            #print("install package %s successfully" % pkg)
 
     os.chdir(stored_dir)
-    IGNORE.close()

@@ -49,16 +49,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 #############################################################
-# -- work related
-
-alias iosc='osc -A https://api.suse.de'
-alias oosc='osc -A https://api.opensuse.org'
-
-#############################################################
 # -- other settings
-
 alias beep='echo -en "\007"'
-alias o='less'
 alias rehash='hash -r'
 alias unmount='echo "Error: Try the command: umount" 1>&2; false'
 alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "/sbin/yast2 online_update" ; fi'
@@ -66,7 +58,6 @@ alias you='if test "$EUID" = 0 ; then /sbin/yast2 online_update ; else su - -c "
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 
 alias clean_pycs='find . -name "*.pyc" -exec rm {} \;'
 
