@@ -10,8 +10,8 @@ then
 fi
 
 alias v='vim'
-alias gv='gvim'
 alias vi='vim'
+alias gv='gvim'
 alias vd='vimdiff'
 alias vt='vim -t'
 
@@ -39,7 +39,7 @@ alias free='free -tm'
 
 alias su='su -'
 
-alias f='find . -name'
+alias fn='find . -name'
 alias fg='find . -type f -print0 | xargs -0 -e egrep -n --color=auto'
 
 #alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
@@ -49,6 +49,21 @@ alias tmux="tmux -2"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+
+#############################################################
+# -- fasd settings
+#
+
+alias sv="fasd -e $EDITOR -si"
+#alias a='fasd -a'        # any
+#alias s='fasd -si'       # show / search / select
+#alias d='fasd -d'        # directory
+#alias f='fasd -f'        # file
+#alias sd='fasd -sid'     # interactive directory selection
+#alias sf='fasd -sif'     # interactive file selection
+#alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+#alias zz='fasd_cd -d -i' # cd with interactive selection
+
 #############################################################
 # -- other settings
 
