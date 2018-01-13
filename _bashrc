@@ -137,9 +137,10 @@ esac
 
 # /etc/profile.d/complete-hosts.sh
 
-test -s ~/.bashrc.local && source ~/.bashrc.local || true
+test -s ~/.common.sh && source ~/.common.sh || true
 test -s ~/.git-completion.bash && source ~/.git-completion.bash || true
-test -s ~/.sh.commom && source ~/.sh.commom || true
+test -s ~/.git-prompt.sh && source ~/.git-prompt.sh || true
+test -s ~/.bashrc.local && source ~/.bashrc.local || true
 
 #PS1="$PS1$(__git_ps1 ["%s"]) \\$ "
 

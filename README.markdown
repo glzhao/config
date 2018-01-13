@@ -16,20 +16,28 @@ becomes
 
 So, just add a `_*` style file, if you want new configuration files.
 
-## Install softwares
+## Install softwares and link config files
+
+### Install softwares
 
 Run and follow the prompts:
 
-	./bootstrap.sh
-	./setup.py -t all
+    sudo yum/apt-get install -y vim cscope ctags cgvg ipython git tmux zsh
+    pip install cheat cppman
 
-Use the following command if you just want vim:
+### setup links
 
-    ./setup.py -t vim
+Run and follow the prompts:
+
+    ./setup.py -p all -a install --force
+
+Use the following command if you just want tmux:
+
+    ./setup.py -p tmux -a install --force
 
 Or restore the original files
 
-    ./setup.py -t restore
+    ./setup.py -p tmux -a restore --force
 
 ## Others
 
@@ -37,16 +45,5 @@ Or restore the original files
 
 This suit configurations need the following softwares:
 
-* git, vim, tmux
-* mutt, offlineimap, msmtp, python, keyring(python module)
-* irssi, gnupg
-
-### Setting passord for mail client manually
-
-This step is mainly for offlineimap and mstp, and the parameters are based on
-the configuration files(.msmtprc and .offlineimaprc). For instance:
-
-	$ python -c "import keyring; keyring.set_password('mstp.gmail.com', 'user', 'PASSWORD')"
-	# Test that the password is successfully stored:
-	$ python -c "import keyring; print keyring.get_password('mstp.gmail.com', 'user')"
-	PASSWORD
+* git, vim, tmux, python
+Packages = ['all', 'common', 'git', 'tmux', 'zsh', 'bash', 'cheat', 'cppman']

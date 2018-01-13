@@ -2,6 +2,13 @@
 # -- general settings
 #
 
+if [[ `uname -s` != "Darwin" ]]
+then
+    alias la='ls -la --color'
+    alias ll='ls -lF --color'
+    alias ls='ls $LS_OPTIONS --color'
+fi
+
 alias v='vim'
 alias gv='gvim'
 alias vi='vim'
@@ -19,12 +26,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-
-alias la='ls -la --color'
-alias ll='ls -lF --color'
-alias ls='ls  --color $LS_OPTIONS'
-alias ls-l='ls -l --color'
-alias dir='ls -l --color'
 
 alias rm='rm -iv'
 alias mv='mv -iv'
@@ -50,6 +51,7 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 #############################################################
 # -- other settings
+
 alias beep='echo -en "\007"'
 alias rehash='hash -r'
 alias unmount='echo "Error: Try the command: umount" 1>&2; false'

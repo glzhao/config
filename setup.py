@@ -1,17 +1,17 @@
 #!/usr/bin/python
 
 # setup personal working environment
-import os
+import os, errno
 import sys
 import argparse
 
 Packages = ['all', 'common', 'git', 'tmux', 'zsh', 'bash', 'cheat', 'cppman']
 
 Links = {
-        'common'    : ['_alias', '_sh.common', '_bin'],
+        'common'    : ['_alias', '_common.sh', '_bin'],
         'git'       : ['_gitconfig', '_git-prompt.sh'],
         'tmux'      : ['_tmux.conf'],
-        'zsh'       : ['_zshrc', '_oh-my-zsh', '_git-completion.zsh'],
+        'zsh'       : ['_zshrc', '_oh-my-zsh'],
         'bash'      : ['_bashrc', '_git-completion.bash'],
         'cheat'     : ['_cheat']
         }
@@ -29,6 +29,10 @@ Python_modules = {
         'cppman'    : ['cppman']
         }
 
+Pkgs = []
+install_with_package = False
+link_force = False
+
 def get_package_manager():
     if sys.platform.startswith('darwin'):
         return 'brew install'
@@ -36,6 +40,16 @@ def get_package_manager():
         return None
     elif sys.platform.startswith('linux'):
         return 'sudo yum install -y'
+
+def symlink_force(target, link_name):
+    try:
+        os.symlink(target, link_name)
+    except OSError, e:
+        if e.errno == errno.EEXIST:
+            os.unlink(link_name)
+            os.symlink(target, link_name)
+        else:
+            raise e
 
 def link(files):
     for f in files:
@@ -46,10 +60,23 @@ def link(files):
         src = os.path.join(os.path.dirname(os.path.abspath(__file__)), f)
         dst = os.path.join(os.path.expanduser("~"), '.' + f[1:])
         if os.path.exists(dst):
-            print "rename %s to %s\n" %(dst, dst + '.df.bak')
-            os.rename(dst, dst + '.df.bak')
+            dst_bak = dst + '.df.bak'
+
+            #if os.path.exists(dst_bak):
+            #    print "unlink %s\n" %(dst_bak)
+            #    if os.path.isdir(dst_bak):
+            #        os.remove(dst_bak)
+            #    else:
+            #        os.unlink(dst_bak)
+
+            print "rename %s to %s\n" %(dst, dst_bak)
+            os.rename(dst, dst_bak)
+
         print "link %s to %s\n" %(src, dst)
-        os.symlink(src, dst)
+        if link_force:
+            symlink_force(src, dst)
+        else:
+            os.symlink(src, dst)
 
 def restore(files):
     for f in files:
@@ -65,6 +92,9 @@ def restore(files):
 def install_package(pkg):
     if pkg in Links:
         link(Links[pkg])
+
+    if not install_with_package:
+        return
 
     pkg_manager = get_package_manager()
     if Binarys.has_key(pkg) and pkg_manager is not None:
@@ -95,22 +125,29 @@ if __name__ == "__main__":
             help='module will be in action, set all first time', metavar=Packages)
     parser.add_argument('-a', '--action', nargs=1, choices=['install', 'restore'],
             help='action type, install or restore', default='install')
+    parser.add_argument('--withPackage', help='install packages or not', action="store_true")
+    parser.add_argument('--force', help='link config force or not', action="store_true")
 
-    pkgs = []
+    if parser.parse_args().withPackage:
+         install_with_package = True
+
+    if parser.parse_args().force:
+        link_force = True
+
     if ['all'] in parser.parse_args().package:
-        pkgs = Packages[1:];
+        Pkgs = Packages[1:];
     else:
         for i in parser.parse_args().package:
-            pkgs += i;
+            Pkgs += i;
 
-    print pkgs
+    print Pkgs
     stored_dir = os.getcwd()
-    for pkg in pkgs:
+    for pkg in Pkgs:
         if 'restore' in parser.parse_args().action:
             uninstall_package(pkg)
-            #print("restore package %s successfully" % pkg)
+            print("restore package %s successfully" % pkg)
         else:
             install_package(pkg)
-            #print("install package %s successfully" % pkg)
+            print("install package %s successfully" % pkg)
 
     os.chdir(stored_dir)
