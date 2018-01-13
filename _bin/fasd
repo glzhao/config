@@ -102,7 +102,7 @@ EOS
         ;;
 
       tcsh-alias) cat <<EOS
-;alias a 'fasd -a';
+alias a 'fasd -a';
 alias s 'fasd -si';
 alias sd 'fasd -sid';
 alias sf 'fasd -sif';
