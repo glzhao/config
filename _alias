@@ -7,6 +7,10 @@ then
     alias la='ls -la --color'
     alias ll='ls -lF --color'
     alias ls='ls $LS_OPTIONS --color'
+else
+    alias la='ls -la'
+    alias ll='ls -lF'
+    alias ls='ls $LS_OPTIONS'
 fi
 
 alias v='vim'

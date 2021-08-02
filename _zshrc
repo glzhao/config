@@ -84,5 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 test -s ~/.common.sh && source ~/.common.sh || true
+test -s ~/.alias && source ~/.alias || true
 test -s ~/.zshrc.local && source ~/.zshrc.local || true

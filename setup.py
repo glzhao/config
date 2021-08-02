@@ -11,7 +11,7 @@ Links = {
         'common'    : ['_alias', '_common.sh', '_bin'],
         'git'       : ['_gitconfig', '_git-prompt.sh'],
         'tmux'      : ['_tmux.conf'],
-        'zsh'       : ['_zshrc', '_oh-my-zsh'],
+        'zsh'       : ['_zshrc', '_git-completion.zsh', '_oh-my-zsh'],
         'bash'      : ['_bashrc', '_git-completion.bash'],
         'cheat'     : ['_cheat']
         }
