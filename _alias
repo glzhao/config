@@ -8,9 +8,9 @@ then
     alias ll='ls -lF --color'
     alias ls='ls $LS_OPTIONS --color'
 else
-    alias la='ls -la'
-    alias ll='ls -lF'
-    alias ls='ls $LS_OPTIONS'
+    alias la='ls -laG'
+    alias ll='ls -lFG'
+    alias ls='ls -G $LS_OPTIONS'
 fi
 
 alias v='vim'
@@ -40,6 +40,7 @@ alias df='df -hT'
 alias du='du -h'
 alias info='info --vi-keys'
 alias free='free -tm'
+alias ipython='/opt/homebrew/Cellar/ipython/7.26.0/bin/ipython'
 
 alias su='su -'
 

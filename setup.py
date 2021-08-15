@@ -9,10 +9,11 @@ Packages = ['all', 'common', 'git', 'tmux', 'zsh', 'bash', 'cheat', 'cppman']
 
 Links = {
         'common'    : ['_alias', '_common.sh', '_bin'],
-        'git'       : ['_gitconfig', '_git-prompt.sh'],
+        'git'       : ['_gitconfig', '_git-prompt.sh', '_git-completion.zsh', '_git-completion.bash'],
         'tmux'      : ['_tmux.conf'],
-        'zsh'       : ['_zshrc', '_git-completion.zsh', '_oh-my-zsh'],
-        'bash'      : ['_bashrc', '_git-completion.bash'],
+# install oh my zsh and then copy other settings to .zshrc
+#        'zsh'       : ['_zshrc' '_oh-my-zsh'],
+        'bash'      : ['_bashrc'],
         'cheat'     : ['_cheat']
         }
 
